@@ -1,0 +1,59 @@
+@import '../utils/include';
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+  
+  &__img {
+      position: absolute;
+      height: 16.5rem;
+      width: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s;
+
+      @include breakpoint-up(medium) {
+        height: 18rem;
+      }
+
+      &--light {
+        background: url(../assets/images/bg-mobile-light.jpg) no-repeat 30%/cover;
+        opacity: 0;
+
+        @include breakpoint-up(medium) {
+        background: url(../assets/images/bg-desktop-light.jpg) no-repeat center top/cover;
+
+        }
+      }
+
+      :root[data-theme="theme-light"] &--light {
+          opacity: 1;
+      }
+
+      &--dark {
+          background: url(../assets/images/bg-mobile-dark.jpg) no-repeat left top/cover;
+          opacity: 0;
+
+          @include breakpoint-up(medium){
+            background: url(../assets/images/bg-desktop-dark.jpg) no-repeat center top/cover;
+          }
+      }
+
+      :root[data-theme="theme-dark"] &--dark {
+          opacity: 1;
+      }
+  }
+}
+
+.main-wrapper {
+    padding: 4rem 1.5rem;
+
+    @include breakpoint-up(medium) {
+        max-width: 34.5rem;
+        margin: 0 auto;
+        padding: 5rem 0;
+    }
+}

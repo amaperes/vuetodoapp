@@ -1,0 +1,41 @@
+@import '../utils/include';
+
+.card {
+  display: flex;
+  justify-content: center;
+  border-radius: 0.3rem;
+  margin-bottom: 1.75rem;
+  position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    left: 24px;
+    width: 24px;
+    height: 24px;
+    border: 1px solid $grayish-blue;
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: border 1s;
+  }
+
+  &__input {
+    padding: 1.25rem 0.625rem 1.25rem 4.1rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.3125rem;
+    font-size: 1.1rem;
+    box-shadow: 0px 1.25rem 2.5rem 0px hsla(235, 19%, 35%, 0.082);
+    font-family: 'Josefin Sans';
+    background-color: $bg-todo;
+    outline: none;
+    color: $text-color;
+    transition: background-color 1s;
+
+    @include breakpoint-up(medium) {
+      font-size: 1.125rem;
+      padding: 1.25rem 0.625rem 1.25rem 4.5rem;
+    }
+  }
+}

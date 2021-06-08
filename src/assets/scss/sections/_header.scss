@@ -1,0 +1,51 @@
+@import '../utils/variables';
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+
+  &__title {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+  }
+
+  &__button {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      outline: none;
+      padding: 0;
+      &:focus {
+          outline: none;
+      }
+  }
+
+  &__button-icon {
+      &--sun,
+      &--mooon {
+          position: absolute;
+      }
+
+      &--sun {
+        opacity: 0;
+        transition: opacity 300ms ease-in;
+      }
+
+      :root[data-theme="theme-light"] &--sun {
+        opacity: 1;
+      }
+
+      &--moon {
+        opacity: 0;
+        transition: opacity 300ms ease-in;
+      }
+
+      :root[data-theme="theme-dark"] &--moon {
+        opacity: 1;
+      }
+  }
+}

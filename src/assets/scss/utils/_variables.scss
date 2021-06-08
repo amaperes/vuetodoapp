@@ -1,0 +1,25 @@
+@import './color-themes';
+
+// Primary Colors
+$brightBlue: hsl(220, 98%, 61%);
+$first: hsl(192, 100%, 67%);
+$second: hsl(280, 87%, 65%);
+
+// Font Sizes
+$font-sm: 0.875rem; // 14px
+$font-md: 1.125rem; // 18px
+$font-lg: 1.25rem;  // 20px
+$font-xl: 3.25rem;  // 52px
+
+//Font Family
+
+$font-family: "Josefin Sans", sans-serif;
+
+//Colors
+$bg-color: var(--c-bg-color);
+$bg-todo: var(--c-bg);
+$text-color: var(--c-text);
+$grayish-blue: var(--c-grayish-blue-very-light);
+$c-blue-grayish-light: var(--c-blue-grayish-light);
+$c-blue-grayish-dark :var(--c-blue-grayish-dark);
+$box-shadow: var(--c-box-shadow);

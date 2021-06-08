@@ -1,0 +1,182 @@
+@import '../utils/include';
+
+.todo {
+  $root: &;
+  width: 100%;
+  border: none;
+  font-size: 1.125rem;
+  font-family: 'Josefin Sans';
+  outline: none;
+  color: $text-color;
+  overflow: hidden;
+  
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 1rem 1.25rem 1rem;
+    border-bottom: 1px solid $c-blue-grayish-light;
+    color: $text-color;
+    transition: border 1s;
+
+    @include breakpoint-up(medium){
+      padding: 1.25rem 1.5rem 1.25rem 1.5rem;
+    }
+
+    // Display circle gradient
+    &:hover #{$root}__span {
+        border-color: transparent;
+        &::before {
+          opacity: 1;
+          background-image: linear-gradient($bg-todo, $bg-todo), radial-gradient(circle at top left, $first, $second);
+        }
+    }
+
+    // Display delete button
+    &:hover #{$root}__deleteBtn {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    // Display completed todo
+    &.completed {
+      // text label color
+      #{$root}__label-text {
+          color: $c-blue-grayish-light;
+      }
+      // text label line
+      #{$root}__label-text {
+        text-decoration-line: line-through; 
+      }
+
+      //check sign
+      #{$root}__span #{$root}__check {
+        opacity: 1;
+      }
+
+      //check gradient
+      #{$root}__label #{$root}__span {
+        background-image: radial-gradient(circle at top left, #57ddff, #c058f3);
+        border: 1px;
+        border-color: transparent;
+        animation: fade-in-opacity 350ms ease-in-out;
+      }
+
+      //hide hover circle gradient
+      &:hover #{$root}__span {
+        &::before {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &__item-input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  &__label {
+    width: 100%;
+    position: relative;
+    padding-left: 1.4rem;
+    display:flex;
+
+    @include breakpoint-up(medium){
+      padding-left: 2.1875rem;
+    }
+  
+    #{$root}__span {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      border: 1px solid $grayish-blue;
+      border-radius: 50%;       
+      transform: translateY(-50%);
+      transition: border 500ms;
+
+      //check sign 
+      #{$root}__check {
+        position: absolute;
+        content: "";
+        left: 7px;
+        top: 7px;
+        width: 12px;
+        height: 10px;
+        opacity: 0;
+      }
+  
+      //gradient circle border
+      &::before {
+          position: absolute;
+          content: "";
+          top: 0;
+          left: 0;
+          width: calc(100% - 1px);
+          height: calc(100% - 1px);
+          border: double 1px transparent;
+          border-radius: 50%;
+          background-image: linear-gradient($bg-todo, $bg-todo), radial-gradient(circle at top left, $first, $second);;
+          background-origin: border-box;
+          background-clip: content-box, border-box;
+          opacity: 0;
+          transition: opacity 1s;
+      }
+  }
+  
+    &-text {
+      position: relative;
+      transition: color 250ms ease-in;
+      color: $text-color;
+      margin-left: 1.06rem;
+      font-size: 0.9rem;
+      text-decoration-line: none; 
+
+      @include breakpoint-up(medium){
+        font-size: 1.125rem;
+      }
+
+      // line for completed todo
+      &::after {
+          position: absolute;
+          content: "";
+          top: 50%;
+          left: 0;
+          width: 0%;
+          height: 1px;
+          //background: $c-blue-grayish-light;
+          //transform: translateY(-50%);
+          opacity: 0;
+          transition: all 350ms ease-in;
+          text-decoration-line: line-through; 
+      }
+    }
+  }
+
+  &__deleteBtn {
+    background: none;
+    border: none;
+    width: 25px;
+    height: 50%;
+    opacity: 1;
+    cursor: pointer;
+    pointer-events: none;
+    font-size: 1.1rem;
+    transition: color 250ms ease-in,
+                opacity 200ms ease-in;
+
+    @include breakpoint-up(large){
+      opacity: 0;
+
+      &:focus {
+        outline: none;
+        opacity: 1;
+      }
+    }
+  }
+}
